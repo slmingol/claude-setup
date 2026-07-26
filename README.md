@@ -1,5 +1,7 @@
 # Claude Code Setup
 
+![Claude Code statusline preview](assets/statusline-preview.svg)
+
 Replication guide for the full Claude Code environment on a fresh machine. Assumes Claude Code CLI is already installed (`claude --version` works).
 
 ---

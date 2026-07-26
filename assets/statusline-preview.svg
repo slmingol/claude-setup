@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="260" viewBox="0 0 780 260">
+  <defs>
+    <style>
+      .term-bg { fill: #1e1e2e; rx: 10; }
+      .titlebar { fill: #313244; }
+      .dot-red { fill: #f38ba8; }
+      .dot-yellow { fill: #f9e2af; }
+      .dot-green { fill: #a6e3a1; }
+      .prompt { fill: #89b4fa; font-family: 'SF Mono', 'Menlo', 'Monaco', monospace; font-size: 13px; }
+      .cmd { fill: #cdd6f4; font-family: 'SF Mono', 'Menlo', 'Monaco', monospace; font-size: 13px; }
+      .dim { fill: #6c7086; font-family: 'SF Mono', 'Menlo', 'Monaco', monospace; font-size: 13px; }
+      .label { fill: #6c7086; font-family: 'SF Mono', 'Menlo', 'Monaco', monospace; font-size: 11px; }
+      .statusbar-bg { fill: #181825; }
+      .model { fill: #89b4fa; font-family: 'SF Mono', 'Menlo', 'Monaco', monospace; font-size: 12px; font-weight: bold; }
+      .project { fill: #a6e3a1; font-family: 'SF Mono', 'Menlo', 'Monaco', monospace; font-size: 12px; }
+      .tokens { fill: #cba6f7; font-family: 'SF Mono', 'Menlo', 'Monaco', monospace; font-size: 12px; }
+      .bar-filled { fill: #89b4fa; }
+      .bar-empty { fill: #313244; }
+      .bar-pct { fill: #cdd6f4; font-family: 'SF Mono', 'Menlo', 'Monaco', monospace; font-size: 12px; }
+      .caveman { fill: #fab387; font-family: 'SF Mono', 'Menlo', 'Monaco', monospace; font-size: 12px; font-weight: bold; }
+      .sep { fill: #45475a; font-family: 'SF Mono', 'Menlo', 'Monaco', monospace; font-size: 12px; }
+      .white { fill: #cdd6f4; font-family: 'SF Mono', 'Menlo', 'Monaco', monospace; font-size: 12px; }
+    </style>
+  </defs>
+
+  <!-- Window -->
+  <rect width="780" height="260" rx="10" class="term-bg"/>
+
+  <!-- Title bar -->
+  <rect width="780" height="36" rx="10" class="titlebar"/>
+  <rect y="26" width="780" height="10" class="titlebar"/>
+
+  <!-- Traffic lights -->
+  <circle cx="20" cy="18" r="6" class="dot-red"/>
+  <circle cx="40" cy="18" r="6" class="dot-yellow"/>
+  <circle cx="60" cy="18" r="6" class="dot-green"/>
+
+  <!-- Title -->
+  <text x="390" y="23" text-anchor="middle" font-family="'SF Mono', 'Menlo', monospace" font-size="12px" fill="#6c7086">claude-setup — claude</text>
+
+  <!-- Terminal content -->
+  <!-- Line 1: prompt + rtk gain -->
+  <text x="20" y="68" class="prompt">~/ </text>
+  <text x="46" y="68" class="cmd">rtk gain</text>
+
+  <!-- rtk gain output -->
+  <text x="20" y="88" class="dim">  Session savings:  </text>
+  <text x="150" y="88" class="cmd">62%  (4,821 tokens saved)</text>
+  <text x="20" y="104" class="dim">  Commands proxied: </text>
+  <text x="150" y="104" class="cmd">38  (git, ls, grep, jq ...)</text>
+  <text x="20" y="120" class="dim">  Cumulative total: </text>
+  <text x="150" y="120" class="cmd">1.2M tokens saved</text>
+
+  <!-- Line 2: prompt + claude -->
+  <text x="20" y="148" class="prompt">~/ </text>
+  <text x="46" y="148" class="cmd">claude</text>
+
+  <!-- Status bar area -->
+  <rect x="0" y="210" width="780" height="50" class="statusbar-bg"/>
+  <rect x="0" y="206" width="780" height="4" fill="#313244"/>
+
+  <!-- Status bar label -->
+  <text x="20" y="227" class="label">STATUS</text>
+
+  <!-- Status bar content -->
+  <!-- Model -->
+  <text x="20" y="247" class="model">Claude Sonnet 4.6</text>
+  <!-- sep -->
+  <text x="168" y="247" class="sep"> | </text>
+  <!-- Project -->
+  <text x="186" y="247" class="project">claude-setup</text>
+  <!-- sep -->
+  <text x="278" y="247" class="sep"> | </text>
+  <!-- Tokens -->
+  <text x="296" y="247" class="tokens">18.3k in / 4.1k out</text>
+  <!-- sep -->
+  <text x="426" y="247" class="sep"> | </text>
+
+  <!-- Context bar -->
+  <!-- filled blocks (14 of 20) -->
+  <text x="444" y="247" class="white">[</text>
+  <text x="452" y="247" class="bar-filled" font-family="'SF Mono','Menlo','Monaco',monospace" font-size="12px">██████████████</text>
+  <text x="564" y="247" class="bar-empty" font-family="'SF Mono','Menlo','Monaco',monospace" font-size="12px">░░░░░░</text>
+  <text x="612" y="247" class="white">]</text>
+  <text x="622" y="247" class="bar-pct"> 68%</text>
+
+  <!-- sep -->
+  <text x="654" y="247" class="sep"> | </text>
+
+  <!-- Caveman -->
+  <text x="672" y="247" class="caveman">[CAVEMAN:LITE]</text>
+
+</svg>
