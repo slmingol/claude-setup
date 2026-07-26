@@ -114,6 +114,24 @@ The statusline shows: `Model | Project | Tokens In / Tokens Out | [Context Bar] 
 
 ---
 
+## MCP Servers
+
+Three MCP servers are connected via the Claude desktop app (remote auth -- no local config required beyond signing in).
+
+| Server | Type | Purpose |
+|---|---|---|
+| **claude.ai Slack** | Remote (OAuth) | Read channels/threads, send messages, search, manage canvases |
+| **claude.ai Google Drive** | Remote (OAuth) | Read, search, create, and download Drive files |
+| **Atlassian** | Remote (OAuth) | Jira issue management, Confluence page read/write/search |
+
+**Setup:** These are authenticated through the Claude desktop app. Sign in to each service via `Settings > Integrations` in the Claude desktop app -- no manual config files needed. Once connected they are available in both the desktop app and Claude Code CLI sessions.
+
+**Usage notes from CLAUDE.md:**
+- Confluence (Atlassian) -- use for creating/editing/reading Confluence docs
+- The `/create-jira` plugin handles Jira ticket creation
+
+---
+
 ## Agent Skills
 
 These two repos add useful slash-command skills to Claude Code:
