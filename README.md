@@ -28,6 +28,50 @@ chmod +x ~/.claude/hooks/*.sh ~/.claude/statusline-command.sh
 
 ---
 
+## Plugins
+
+Claude Code plugins extend the CLI with new slash commands and capabilities. The `settings.json` in this repo already includes the `extraKnownMarketplaces` and `enabledPlugins` entries needed -- copy it into `~/.claude/` first, then install each plugin from within Claude Code.
+
+### Custom Marketplaces
+
+Three non-default marketplaces must be registered before their plugins can be installed. These are already wired in `claude-config/settings.json`:
+
+| Marketplace Key | Repo |
+|---|---|
+| `caveman` | `github:JuliusBrussee/caveman` |
+| `bandwidth` | `github:Bandwidth/bw-agents` |
+| `plugins-kit` | `git@github.com:kitaekatt/plugins-kit.git` (SSH) |
+
+> `plugins-kit` requires SSH access to the private repo.
+
+### Install Commands
+
+Run these inside a Claude Code session:
+
+```
+/plugins install caveman@caveman
+/plugins install bandwidth@bandwidth
+/plugins install paas@bandwidth
+/plugins install github@claude-plugins-official
+/plugins install cache-kit@plugins-kit
+/plugins install clangd-lsp@claude-plugins-official
+/plugins install gopls-lsp@claude-plugins-official
+```
+
+### Plugin Reference
+
+| Plugin | Marketplace | Purpose |
+|---|---|---|
+| `caveman` | `JuliusBrussee/caveman` | Token-efficient output compression; modes: `lite`, `full`, `ultra`, `wenyan-*`, `commit`, `review`, `compress` |
+| `bandwidth` | `Bandwidth/bw-agents` | Bandwidth internal agent tools |
+| `paas` | `Bandwidth/bw-agents` | Bandwidth PaaS tooling |
+| `github` | `anthropics/claude-plugins-official` | GitHub PR/issue/review workflows |
+| `cache-kit` | `kitaekatt/plugins-kit` | Prompt cache management utilities |
+| `clangd-lsp` | `anthropics/claude-plugins-official` | C/C++ LSP integration via clangd |
+| `gopls-lsp` | `anthropics/claude-plugins-official` | Go LSP integration via gopls |
+
+---
+
 ## Key settings.json Config
 
 ### Hooks
