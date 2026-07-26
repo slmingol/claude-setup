@@ -18,11 +18,14 @@ The core config lives in `~/.claude/`. All files are versioned in the [`claude-c
 | `claude-config/statusline-command.sh` | `~/.claude/statusline-command.sh` | Custom statusline script (model, context %, token counts, caveman mode) |
 | `claude-config/hooks/track-output-tokens.sh` | `~/.claude/hooks/track-output-tokens.sh` | Stop hook — writes output token count to `.session-out-tokens.json` for the statusline |
 | `claude-config/hooks/validate-bash.sh` | `~/.claude/hooks/validate-bash.sh` | PreToolUse hook — blocks `rm -rf /`, `git push --force`, `git add -A`, and `sudo` |
+| `claude-config/settings.local.json` | `~/.claude/settings.local.json` | Machine-local overrides: one-off `Bash` allow rules and local model pin (not committed with sensitive paths) |
+
+`settings.local.json` is intentionally separate from `settings.json` -- use it for allows that are machine-specific or temporary (e.g. a one-off `Bash(openssl enc *)` for a single project) so they don't pollute the shared config. The file in this repo contains only a placeholder; replace its `allow` array with whatever your local machine needs.
 
 Copy them into place:
 
 ```bash
-cp claude-config/CLAUDE.md claude-config/RTK.md claude-config/settings.json claude-config/statusline-command.sh ~/.claude/
+cp claude-config/CLAUDE.md claude-config/RTK.md claude-config/settings.json claude-config/settings.local.json claude-config/statusline-command.sh ~/.claude/
 mkdir -p ~/.claude/hooks
 cp claude-config/hooks/*.sh ~/.claude/hooks/
 chmod +x ~/.claude/hooks/*.sh ~/.claude/statusline-command.sh
@@ -75,6 +78,15 @@ Run these inside a Claude Code session:
 ---
 
 ## Key settings.json Config
+
+### Model
+
+`settings.json` pins the default model via `"model": "claude-sonnet-4-6"`. This will become stale as Anthropic releases new models. To update it, either:
+
+- Edit `~/.claude/settings.json` directly and change the `"model"` value, or
+- Run `/model` inside Claude Code to select interactively
+
+Current model IDs as of mid-2025: `claude-sonnet-4-6`, `claude-opus-5`, `claude-sonnet-5`, `claude-haiku-4-5-20251001`. Verify current IDs at [docs.anthropic.com](https://docs.anthropic.com/en/docs/about-claude/models/overview) before pinning.
 
 ### Hooks
 
@@ -252,7 +264,9 @@ The `@RTK.md` import pulls in the RTK reference so Claude knows to use RTK meta 
 ```
 [ ] claude --version                          # Claude Code CLI installed
 [ ] git clone https://github.com/slmingol/claude-setup
-[ ] cp claude-config/CLAUDE.md claude-config/RTK.md claude-config/settings.json claude-config/statusline-command.sh ~/.claude/
+[ ] cp claude-config/CLAUDE.md claude-config/RTK.md claude-config/settings.json claude-config/settings.local.json claude-config/statusline-command.sh ~/.claude/
+[ ] # edit ~/.claude/settings.local.json -- replace allow[] with machine-specific rules
+[ ] # edit ~/.claude/settings.json -- update "model" to the current model ID if needed
 [ ] mkdir -p ~/.claude/hooks
 [ ] cp claude-config/hooks/*.sh ~/.claude/hooks/
 [ ] chmod +x ~/.claude/hooks/*.sh ~/.claude/statusline-command.sh
