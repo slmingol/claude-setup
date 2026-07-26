@@ -256,7 +256,14 @@ The `@RTK.md` import pulls in the RTK reference so Claude knows to use RTK meta 
 [ ] chmod +x ~/.claude/hooks/*.sh ~/.claude/statusline-command.sh
 [ ] brew install getagentseal/tap/rtk         # RTK
 [ ] rtk --version                             # Verify RTK
-[ ] /install caveman                          # Inside Claude Code
+# Run the following inside a Claude Code session:
+[ ] /plugins install caveman@caveman
+[ ] /plugins install bandwidth@bandwidth
+[ ] /plugins install paas@bandwidth
+[ ] /plugins install github@claude-plugins-official
+[ ] /plugins install cache-kit@plugins-kit    # requires SSH access to kitaekatt/plugins-kit
+[ ] /plugins install clangd-lsp@claude-plugins-official
+[ ] /plugins install gopls-lsp@claude-plugins-official
 [ ] npm install -g codeburn                   # CodeBurn (optional)
 [ ] tokentelemetry install                    # TokenTelemetry (optional)
 ```
