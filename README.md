@@ -6,23 +6,24 @@ Replication guide for the full Claude Code environment on a fresh machine. Assum
 
 ## Files to Copy
 
-The core config lives in `~/.claude/`. Copy these from this repo or an existing machine:
+The core config lives in `~/.claude/`. All files are versioned in the [`claude-config/`](claude-config/) directory of this repo.
 
-| File / Path | Purpose |
-|---|---|
-| `~/.claude/CLAUDE.md` | Global behavior instructions loaded into every session |
-| `~/.claude/RTK.md` | RTK reference doc, imported via `@RTK.md` in CLAUDE.md |
-| `~/.claude/settings.json` | Permissions, model, hooks, plugins, statusline |
-| `~/.claude/statusline-command.sh` | Custom statusline script (model, context %, token counts, caveman mode) |
-| `~/.claude/hooks/track-output-tokens.sh` | Stop hook — writes output token count to `.session-out-tokens.json` for the statusline |
-| `~/.claude/hooks/validate-bash.sh` | PreToolUse hook — blocks `rm -rf /`, `git push --force`, `git add -A`, and `sudo` |
+| Repo Path | Destination | Purpose |
+|---|---|---|
+| `claude-config/CLAUDE.md` | `~/.claude/CLAUDE.md` | Global behavior instructions loaded into every session |
+| `claude-config/RTK.md` | `~/.claude/RTK.md` | RTK reference doc, imported via `@RTK.md` in CLAUDE.md |
+| `claude-config/settings.json` | `~/.claude/settings.json` | Permissions, model, hooks, plugins, statusline |
+| `claude-config/statusline-command.sh` | `~/.claude/statusline-command.sh` | Custom statusline script (model, context %, token counts, caveman mode) |
+| `claude-config/hooks/track-output-tokens.sh` | `~/.claude/hooks/track-output-tokens.sh` | Stop hook — writes output token count to `.session-out-tokens.json` for the statusline |
+| `claude-config/hooks/validate-bash.sh` | `~/.claude/hooks/validate-bash.sh` | PreToolUse hook — blocks `rm -rf /`, `git push --force`, `git add -A`, and `sudo` |
 
-After copying, verify hooks are executable:
+Copy them into place:
 
 ```bash
-chmod +x ~/.claude/hooks/track-output-tokens.sh
-chmod +x ~/.claude/hooks/validate-bash.sh
-chmod +x ~/.claude/statusline-command.sh
+cp claude-config/CLAUDE.md claude-config/RTK.md claude-config/settings.json claude-config/statusline-command.sh ~/.claude/
+mkdir -p ~/.claude/hooks
+cp claude-config/hooks/*.sh ~/.claude/hooks/
+chmod +x ~/.claude/hooks/*.sh ~/.claude/statusline-command.sh
 ```
 
 ---
@@ -186,11 +187,10 @@ The `@RTK.md` import pulls in the RTK reference so Claude knows to use RTK meta 
 
 ```
 [ ] claude --version                          # Claude Code CLI installed
-[ ] cp CLAUDE.md RTK.md ~/.claude/            # Global instructions
-[ ] cp settings.json ~/.claude/               # Permissions, hooks, plugins, statusline
-[ ] cp statusline-command.sh ~/.claude/       # Statusline script
+[ ] git clone https://github.com/slmingol/claude-setup
+[ ] cp claude-config/CLAUDE.md claude-config/RTK.md claude-config/settings.json claude-config/statusline-command.sh ~/.claude/
 [ ] mkdir -p ~/.claude/hooks
-[ ] cp hooks/* ~/.claude/hooks/               # Hook scripts
+[ ] cp claude-config/hooks/*.sh ~/.claude/hooks/
 [ ] chmod +x ~/.claude/hooks/*.sh ~/.claude/statusline-command.sh
 [ ] brew install getagentseal/tap/rtk         # RTK
 [ ] rtk --version                             # Verify RTK
