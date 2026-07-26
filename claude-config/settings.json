@@ -1,0 +1,105 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git *)",
+      "Bash(python *)",
+      "Bash(python3 *)",
+      "Bash(npm *)",
+      "Bash(ls*)",
+      "Bash(grep *)",
+      "Bash(jq *)",
+      "Bash(curl *)",
+      "Bash(ruff *)",
+      "Bash(black *)",
+      "Bash(pytest*)",
+      "Read",
+      "WebFetch",
+      "WebSearch"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(./.aws/**)",
+      "Read(./.ssh/**)"
+    ],
+    "defaultMode": "bypassPermissions",
+    "disableBypassPermissionsMode": "disable"
+  },
+  "model": "claude-sonnet-4-6",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/track-output-tokens.sh"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/validate-bash.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "caveman@caveman": true,
+    "bandwidth@bandwidth": true,
+    "paas@bandwidth": true,
+    "github@claude-plugins-official": true,
+    "cache-kit@plugins-kit": true,
+    "clangd-lsp@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "caveman": {
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman"
+      }
+    },
+    "bandwidth": {
+      "source": {
+        "source": "github",
+        "repo": "Bandwidth/bw-agents"
+      }
+    },
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
+    },
+    "plugins-kit": {
+      "source": {
+        "source": "git",
+        "url": "git@github.com:kitaekatt/plugins-kit.git"
+      }
+    }
+  },
+  "effortLevel": "medium",
+  "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true
+}
