@@ -256,6 +256,10 @@ The `@RTK.md` import pulls in the RTK reference so Claude knows to use RTK meta 
 [ ] chmod +x ~/.claude/hooks/*.sh ~/.claude/statusline-command.sh
 [ ] brew install getagentseal/tap/rtk         # RTK
 [ ] rtk --version                             # Verify RTK
+# Authenticate MCP servers via Claude desktop app Settings > Integrations:
+[ ] Sign in to Slack (claude.ai Slack)
+[ ] Sign in to Google (claude.ai Google Drive)
+[ ] Sign in to Atlassian (Jira + Confluence)
 # Run the following inside a Claude Code session:
 [ ] /plugins install caveman@caveman
 [ ] /plugins install bandwidth@bandwidth
